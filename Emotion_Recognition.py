@@ -74,7 +74,7 @@ def train_and_evaluate(clf, X_train, X_test, y_train, y_test):
 # ===============================================================================
 
 def detectFaces(frame):
-    cascPath = "../data/haarcascade_frontalface_default.xml"
+    cascPath = "/home/madushika/Documents/mywork/Intrest_Analysis_Using SVM/data/haarcascade_frontalface_default.xml"
     faceCascade = cv2.CascadeClassifier(cascPath)
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     detected_faces = faceCascade.detectMultiScale(
@@ -102,8 +102,8 @@ def extract_face_features(gray, detected_face, offset_coefficients):
 def predict_face_is_smiling(extracted_face):
     return True if svc_1.predict(extracted_face.reshape(1, -1)) else False
 
-gray1, face1 = detectFaces(cv2.imread("../data/Test3.jpg"))
-gray2, face2 = detectFaces(cv2.imread("../data/Test2.jpg"))
+gray1, face1 = detectFaces(cv2.imread("/home/madushika/Documents/mywork/Intrest_Analysis_Using SVM/data/Test_Image1.jpg"))
+gray2, face2 = detectFaces(cv2.imread("/home/madushika/Documents/mywork/Intrest_Analysis_Using SVM//data/Test_Image2.jpg"))
 
 
 def test_recognition(c1, c2):
@@ -126,7 +126,7 @@ if __name__ == "__main__":
     svc_1 = SVC(kernel='linear')  # Initializing Classifier
 
     trainer = Trainer()
-    results = json.load(open("../results/results.xml"))  # Loading the classification result
+    results = json.load(open("/home/madushika/Documents/mywork/Intrest_Analysis_Using SVM/results/results.xml"))  # Loading the classification result
     trainer.results = results
 
     indices = [int(i) for i in trainer.results]  # Building the dataset now
