@@ -81,7 +81,7 @@ def detectFaces(frame):
             gray,
             scaleFactor=1.1,
             minNeighbors=6,
-            minSize=(50, 50),
+            minSize=(75, 75),
             flags=cv2.CASCADE_SCALE_IMAGE)
     return gray, detected_faces
 
@@ -102,8 +102,8 @@ def extract_face_features(gray, detected_face, offset_coefficients):
 def predict_face_is_smiling(extracted_face):
     return True if svc_1.predict(extracted_face.reshape(1, -1)) else False
 
-gray1, face1 = detectFaces(cv2.imread("/home/madushika/Documents/mywork/Intrest_Analysis_Using SVM/data/Test_Image1.jpg"))
-gray2, face2 = detectFaces(cv2.imread("/home/madushika/Documents/mywork/Intrest_Analysis_Using SVM//data/Test_Image2.jpg"))
+gray1, face1 = detectFaces(cv2.imread("/home/madushika/Documents/mywork/Intrest_Analysis_Using SVM/data/Test_Image2.jpg"))
+gray2, face2 = detectFaces(cv2.imread("/home/madushika/Documents/mywork/Intrest_Analysis_Using SVM//data/Test_Image1.jpg"))
 
 
 def test_recognition(c1, c2):
